@@ -1,0 +1,73 @@
+* Exercise 1 - ArrayDemo
+Write a program named ArrayDemo that stores an array of 10 integers. Until the user
+enters a sentinel value, allow the user four options: (1) to view the list in order from
+the first to last position in the stored array, (2) to view the list in order from the last to
+first position, (3) to choose a specific position to view, or (4) to quit the application.
+*/
+//Programmer: ProgrammerFromMars
+
+using System;
+using static System.Console;
+namespace exercise1
+{
+  class ArrayDemo
+  {
+    static void Main(string[] args)
+    {
+      // Variable Declaration
+      int[] arrDemo = { 2, 4, 5, 23, 78, 52, 43, 86, 34, 11 };
+      int menuChoice; //Store value of option entered by the user
+      int specificIndex = 0; //Store value of index entered by the user
+      int itemCounter = 0; //Used in the for loop
+      do
+      {
+        WriteLine(" MENU ");
+        WriteLine("1 - View list in order from the first to last position");
+        WriteLine("2 - View list in order from the last to first position");
+        WriteLine("3 - Choose a specific position to view");
+        WriteLine("4 - Quit");
+        WriteLine(" ");
+        
+        //Get a menu option from the user
+        Write("\n\nSelect your option >> ");
+        menuChoice = int.Parse(ReadLine());
+        WriteLine("\n");
+        
+        switch (menuChoice)
+        {
+        case 1:
+          Write("Result: ");
+          for (itemCounter = 0; itemCounter < 10; itemCounter++)
+          {
+            Write("{0} ", arrDemo[itemCounter]);
+          }
+          break;
+        case 2:
+          Write("Result: ");
+          for (itemCounter = 9; itemCounter >= 0; itemCounter--)
+          {
+            Write("{0} ", arrDemo[itemCounter]);
+          }
+          break;
+        case 3:
+          //Get specific index from the user
+          Write("Enter your index >> ");
+          specificIndex = int.Parse(ReadLine());
+          
+          //Display the number based on the specific index
+          WriteLine("Index {0}: {1}", specificIndex, arrDemo[specificIndex - 1]);
+          break;
+        case 4:
+          WriteLine("Goodbye");
+          break;
+        default:
+          WriteLine("Error : invalid option");
+          break;
+        }
+      }
+      while (menuChoice != 4);
+
+      ReadLine(); //System Pause
+    }
+  }
+}
